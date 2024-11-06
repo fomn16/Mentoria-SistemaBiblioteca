@@ -1,6 +1,7 @@
 ﻿using SistemaBiblioteca.Entities;
 using SistemaBiblioteca.Repositories.Implementation;
 using Microsoft.AspNetCore.Mvc;
+using SistemaBiblioteca.Domain;
 
 namespace SistemaBiblioteca.Controllers
 {
@@ -8,19 +9,22 @@ namespace SistemaBiblioteca.Controllers
     [ApiController]
     public class LivroController : ControllerBase
     {
-        private readonly Repository _repository;
+        private readonly LivroDomainService _service;
 
-        public LivroController()
+        public LivroController(LivroDomainService service)
         {
-            _repository = Repository.GetRepository();
+            _service = service;
         }
 
         [HttpPost]
         public ActionResult Post(
             [FromBody] Livro livro)
         {
-            _repository.CadastrarLivro(livro);
+            _service.CadastrarLivro(livro);
             return Ok();
         }
+
+        [HttpGet]
+        public ActionResult Listar() { return Ok(_service.ListarLivros()); }
     }
 }

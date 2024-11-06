@@ -10,9 +10,9 @@ namespace SistemaBiblioteca.Controllers
     {
         private readonly Repository _repository;
 
-        public EmprestimoController()
+        public EmprestimoController(Repository repository)
         {
-            _repository = Repository.GetRepository();
+            _repository = repository;
         }
 
         [HttpPost]

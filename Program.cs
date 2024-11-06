@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using SistemaBiblioteca.Domain;
+using SistemaBiblioteca.Repositories;
+using SistemaBiblioteca.Repositories.Implementation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +11,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<Repository>();
+builder.Services.AddScoped<LivroDomainService>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite("Data Source=BancoDeDados.db")
+);
 
 var app = builder.Build();
 

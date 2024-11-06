@@ -6,21 +6,18 @@ namespace SistemaBiblioteca.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunoController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
         private readonly Repository _repository;
 
-        public AlunoController(Repository repository)
+        public UsuarioController(Repository repository)
         {
             _repository = repository;
         }
 
-        [HttpPost]
-        public ActionResult Post(
-            [FromBody] Aluno aluno)
-        {
-            _repository.CadastrarAluno(aluno);
-            return Ok();
+        [HttpGet]
+        public IActionResult Listar() { 
+            return Ok(_repository.ListarUsuarios());
         }
     }
 }

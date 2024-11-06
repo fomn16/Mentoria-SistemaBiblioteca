@@ -4,51 +4,60 @@ namespace SistemaBiblioteca.Repositories.Implementation
 {
     public class Repository
     {
-        private static Repository _repository = null;
-        private List<Livro> _livros;
-        private List<Aluno> _alunos;
-        private List<Professor> _professores;
-        private List<Emprestimo> _emprestimos;
+        private readonly ApplicationDbContext _context;
 
-        private Repository()
+        public Repository(ApplicationDbContext context)
         {
-            _livros = new List<Livro>();
-            _alunos = new List<Aluno>();
-            _professores = new List<Professor>();
-            _emprestimos = new List<Emprestimo>();
-        }
-
-        public static Repository GetRepository()
-        {
-            if(_repository == null)
-            {
-                _repository = new Repository();
-            }
-            return _repository;
+            _context = context;
         }
 
         public void CadastrarLivro(
             Livro livro)
         {
-            _livros.Add(livro);
+            _context.Livros.Add(livro);
+            _context.SaveChanges();
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<Livro> ListarLivros()
+        {
+            return _context.Livros.ToList();
+        }
+
+        public Livro? Obter(string ISBN)
+        {
+            return _context.Livros
+                .Where(x => x.ISBN == ISBN)
+                .FirstOrDefault();
         }
 
         public void CadastrarAluno(
             Aluno aluno)
         {
-            _alunos.Add(aluno);
+            _context.Alunos.Add(aluno);
+            _context.SaveChanges();
         }
 
         public void CadastrarProfessor(
             Professor professor)
         {
-            _professores.Add(professor);
+            _context.Professores.Add(professor);
+            _context.SaveChanges();
         }
 
         public void CadastrarEmprestimo(
             Emprestimo emprestimo)
         {
-            _emprestimos.Add(emprestimo);
+            _context.Emprestimos.Add(emprestimo);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<Usuario> ListarUsuarios() {
+            return _context.Usuarios.ToList();
         }
     }
 }

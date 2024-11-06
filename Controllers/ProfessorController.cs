@@ -10,9 +10,9 @@ namespace SistemaBiblioteca.Controllers
     {
         private readonly Repository _repository;
 
-        public ProfessorController()
+        public ProfessorController(Repository repository)
         {
-            _repository = Repository.GetRepository();
+            _repository = repository;
         }
 
         [HttpPost]
