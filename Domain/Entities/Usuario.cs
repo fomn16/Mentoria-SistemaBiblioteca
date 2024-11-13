@@ -1,4 +1,4 @@
-namespace SistemaBiblioteca.Entities
+namespace SistemaBiblioteca.Domain.Entities
 {
     public class Usuario
     {

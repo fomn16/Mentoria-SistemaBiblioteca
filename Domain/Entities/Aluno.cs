@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace SistemaBiblioteca.Entities
+namespace SistemaBiblioteca.Domain.Entities
 {
     public class Aluno : Usuario
     {

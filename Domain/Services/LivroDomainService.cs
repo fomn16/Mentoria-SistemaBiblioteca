@@ -1,36 +1,36 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaBiblioteca.Entities;
+using SistemaBiblioteca.Domain.Entities;
 using SistemaBiblioteca.Repositories.Implementation;
 
-namespace SistemaBiblioteca.Domain
+namespace SistemaBiblioteca.Domain.Services
 {
     public class LivroDomainService
     {
-        private readonly Repository _repository;
+        private readonly LivroRepository _repository;
 
-        public LivroDomainService(Repository repository)
+        public LivroDomainService(LivroRepository repository)
         {
             _repository = repository;
         }
-        public void CadastrarLivro(
+
+        public void Cadastrar(
            Livro livro)
         {
-            // regras de negócio
             var livroExistente = _repository.Obter(livro.ISBN);
-            if(livroExistente != null)
+            if (livroExistente != null)
             {
                 livroExistente.QuantidadeDisponivel += livro.QuantidadeDisponivel;
                 _repository.SaveChanges();
             }
             else
             {
-                _repository.CadastrarLivro(livro);
+                _repository.Cadastrar(livro);
             }
         }
 
-        public IEnumerable<Livro> ListarLivros()
+        public IEnumerable<Livro> Listar()
         {
-            return _repository.ListarLivros();
+            return _repository.Listar();
         }
     }
 }

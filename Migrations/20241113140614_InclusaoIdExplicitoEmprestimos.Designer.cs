@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaBiblioteca.Repositories;
 
@@ -10,9 +11,11 @@ using SistemaBiblioteca.Repositories;
 namespace SistemaBiblioteca.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241113140614_InclusaoIdExplicitoEmprestimos")]
+    partial class InclusaoIdExplicitoEmprestimos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
@@ -33,6 +36,9 @@ namespace SistemaBiblioteca.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UsusarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

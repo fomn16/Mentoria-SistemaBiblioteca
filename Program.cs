@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SistemaBiblioteca.Domain;
+using SistemaBiblioteca.Domain.Services;
 using SistemaBiblioteca.Repositories;
 using SistemaBiblioteca.Repositories.Implementation;
 
@@ -12,8 +12,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<Repository>();
+builder.Services.AddScoped<AlunoDomainService>();
+builder.Services.AddScoped<EmprestimoDomainService>();
 builder.Services.AddScoped<LivroDomainService>();
+builder.Services.AddScoped<ProfessorDomainService>();
+builder.Services.AddScoped<UsuarioDomainService>();
+
+builder.Services.AddScoped<AlunoRepository>();
+builder.Services.AddScoped<EmprestimoRepository>();
+builder.Services.AddScoped<LivroRepository>();
+builder.Services.AddScoped<ProfessorRepository>();
+builder.Services.AddScoped<UsuarioRepository>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=BancoDeDados.db")

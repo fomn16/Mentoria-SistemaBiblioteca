@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace SistemaBiblioteca.Entities
+namespace SistemaBiblioteca.Domain.Entities
 {
     public class Professor : Usuario
     {

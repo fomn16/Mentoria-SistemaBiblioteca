@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaBiblioteca.Entities;
+using SistemaBiblioteca.Domain.Entities;
 
 namespace SistemaBiblioteca.Repositories
 {
