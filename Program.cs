@@ -23,6 +23,7 @@ builder.Services.AddScoped<EmprestimoRepository>();
 builder.Services.AddScoped<LivroRepository>();
 builder.Services.AddScoped<ProfessorRepository>();
 builder.Services.AddScoped<UsuarioRepository>();
+builder.Services.AddScoped<ArquivoRepository>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=BancoDeDados.db")
