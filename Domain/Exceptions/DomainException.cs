@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-
+//comentario
 namespace SistemaBiblioteca.Domain.Exceptions
 {
     public class DomainException : Exception
