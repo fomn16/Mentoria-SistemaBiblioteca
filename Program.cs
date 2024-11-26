@@ -4,9 +4,11 @@ using SistemaBiblioteca.Repositories;
 using SistemaBiblioteca.Repositories.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
-
+// Mudei tal coisa
 // Add services to the container.
 
+
+//mudei outra coisa que n vai pro git
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
